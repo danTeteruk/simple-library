@@ -15,7 +15,7 @@ class BooksDetails extends React.Component {
     $.ajax({
       url: routes.showBook(this.props.bookId),
       success: (data) => {
-        this.setState({book: data})
+        this.setState({ book: data });
       },
     });
   }
@@ -54,6 +54,6 @@ class BooksDetails extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

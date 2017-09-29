@@ -26,7 +26,7 @@ class CategoriesEdit extends React.Component {
       },
       success: () => {
         returnToList();
-      }
+      },
     });
   }
 
@@ -40,9 +40,9 @@ class CategoriesEdit extends React.Component {
       success: (data) => {
         this.setState({
           name: data.name,
-          id: data.id
+          id: data.id,
         });
-      }
+      },
     });
   }
 
@@ -76,6 +76,6 @@ class CategoriesEdit extends React.Component {
         </div>
         <button type='button' className="btn btn-primary book-edit--submit" onClick={this.submit}>{I18n.t('categories.save')}</button>
       </div>
-    )
+    );
   }
 }

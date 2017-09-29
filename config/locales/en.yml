@@ -47,6 +47,7 @@ en:
     name_header: Name
     category_header: Category
     actions_header: Actions
+    add_new: Add New
   categories:
     name: "Name: "
     save: Save

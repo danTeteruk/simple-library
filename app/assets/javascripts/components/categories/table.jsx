@@ -31,7 +31,7 @@ class CategoriesTable extends React.Component {
     $.ajax({
       url: routes.categoriesIndex(),
       success: (data) => {
-        this.setState({categories: data, isReady: true})
+        this.setState({ categories: data, isReady: true })
       },
     });
   }
@@ -67,13 +67,13 @@ class CategoriesTable extends React.Component {
           </div>
         </td>
       </tr>
-    )
+    );
   }
 
   renderTable() {
     const { categories } = this.state;
 
-    if ( !this.state.isReady ) { return null };
+    if (!this.state.isReady) { return null; };
     return (
       <table className="table table-bordered table-striped ">
         <thead>
@@ -87,7 +87,7 @@ class CategoriesTable extends React.Component {
           { categories.map(this.renderCategoriesRow) }
         </tbody>
       </table>
-    )
+    );
   }
 
   render() {
@@ -109,6 +109,6 @@ class CategoriesTable extends React.Component {
           { this.renderTable() }
         </div>
       </div>
-    )
+    );
   }
 }

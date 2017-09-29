@@ -8,7 +8,7 @@ class BooksNew extends React.Component {
       year: '',
       author: '',
       category_id: '',
-      categories: []
+      categories: [],
     };
 
     this.onChange = this.onChange.bind(this);
@@ -21,12 +21,11 @@ class BooksNew extends React.Component {
   }
 
   toAttributes() {
-    attributes = ['name', 'year', 'author', 'category_id']
+    attributes = ['name', 'year', 'author', 'category_id'];
     attr = {};
     attributes.forEach((item) => {
-      attr[item] = this.state[item]
+      attr[item] = this.state[item];
     });
-    console.log(attr)
     return attr;
   }
 
@@ -40,7 +39,7 @@ class BooksNew extends React.Component {
       },
       success: () => {
         returnToList();
-      }
+      },
     });
   }
 
@@ -52,7 +51,7 @@ class BooksNew extends React.Component {
           categories: data.categories,
           category_id: data.category_id,
         });
-      }
+      },
     });
   }
 
@@ -65,7 +64,7 @@ class BooksNew extends React.Component {
   render() {
     const { returnToList } = this.props;
     const { name, id, author, year, category_id, categories } = this.state;
-    const type_options = categories.map(function(item) {
+    const typeOptions = categories.map(function (item) {
       return <option key = { item.id } value = { item.id }>{item.name}</option>
     })
     return (
@@ -103,7 +102,7 @@ class BooksNew extends React.Component {
                 name = 'category_id'
                 onChange = { this.onChange }
                 default = { category_id }>
-                { type_options }
+                { typeOptions }
               </select>
             </div>
             <div className="book-details--item">
@@ -118,6 +117,6 @@ class BooksNew extends React.Component {
         </div>
         <button type='button' className="btn btn-primary book-edit--submit" onClick={this.submit}>{I18n.t('books.save')}</button>
       </div>
-    )
+    );
   }
 }

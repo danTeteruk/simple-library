@@ -4,7 +4,7 @@ class CategoriesNew extends React.Component {
     super(props);
     this.state = {
       book: {},
-      name: ''
+      name: '',
     };
 
     this.onChange = this.onChange.bind(this);
@@ -23,7 +23,7 @@ class CategoriesNew extends React.Component {
       },
       success: () => {
         returnToList();
-      }
+      },
     });
   }
 
@@ -57,6 +57,6 @@ class CategoriesNew extends React.Component {
         </div>
         <button type='button' className="btn btn-primary book-edit--submit" onClick={this.submit}>{I18n.t('categories.save')}</button>
       </div>
-    )
+    );
   }
 }

@@ -14,15 +14,15 @@ class CategoriesMain extends React.Component {
   }
 
   openEdit(category_id) {
-    this.setState({displayMode: 'edit', categoryId: category_id});
+    this.setState({ displayMode: 'edit', categoryId: category_id });
   }
 
   openNew() {
-    this.setState({displayMode: 'new'});
+    this.setState({ displayMode: 'new' });
   }
 
   returnToList() {
-    this.setState({displayMode: 'list'})
+    this.setState({ displayMode: 'list' });
   }
 
   getDisplayMode(mode) {
@@ -30,9 +30,8 @@ class CategoriesMain extends React.Component {
       list: <CategoriesTable openEdit={this.openEdit} openNew={this.openNew}/>,
       edit: <CategoriesEdit categoryId={this.state.categoryId} returnToList={this.returnToList} />,
       new: <CategoriesNew returnToList={this.returnToList}/>,
-    }
+    };
 
-    console.log(mode)
     return components[mode];
   }
 
@@ -41,6 +40,6 @@ class CategoriesMain extends React.Component {
       <div className="book-main--container">
         { this.getDisplayMode(this.state.displayMode) }
       </div>
-    )
+    );
   }
 }

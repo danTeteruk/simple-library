@@ -20,7 +20,7 @@ class BooksTable extends React.Component {
     $.ajax({
       url: routes.booksIndex(),
       success: (data) => {
-        this.setState({books: data, isReady: true});
+        this.setState({ books: data, isReady: true });
       },
     });
   }
@@ -68,13 +68,14 @@ class BooksTable extends React.Component {
           </div>
         </td>
       </tr>
-    )
+    );
   }
 
   renderTable() {
     const { books } = this.state;
 
-    if ( !this.state.isReady ) { return null };
+    if (!this.state.isReady) { return null; };
+
     return (
       <table className="table table-bordered table-striped ">
         <thead>
@@ -88,7 +89,7 @@ class BooksTable extends React.Component {
           { books.map(this.renderBookRow) }
         </tbody>
       </table>
-    )
+    );
   }
 
   render() {
@@ -97,12 +98,12 @@ class BooksTable extends React.Component {
         <div className="book-main--header">
           <div className="book-main--header-item">
             <ol className="breadcrumb">
-              <li>Books</li>
+              <li>{I18n.t('books.books')}</li>
             </ol>
           </div>
           <div className="book-main--header-item">
             <div className="book-main--header-create-new">
-              <button onClick={() => {this.props.openNew()}}>Add New</button>
+              <button onClick={() => {this.props.openNew()}}>{I18n.t('books.add_new')}</button>
             </div>
           </div>
         </div>
@@ -110,7 +111,7 @@ class BooksTable extends React.Component {
           { this.renderTable() }
         </div>
       </div>
-    )
+    );
   }
 }
 

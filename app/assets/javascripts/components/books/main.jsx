@@ -14,20 +14,20 @@ class BooksMain extends React.Component {
     this.returnToList = this.returnToList.bind(this);
   }
 
-  openDetails(book_id) {
-    this.setState({displayMode: 'book', bookId: book_id});
+  openDetails(bookId) {
+    this.setState({ displayMode: 'book', bookId: bookId });
   }
 
-  openEdit(book_id) {
-    this.setState({displayMode: 'edit', bookId: book_id});
+  openEdit(bookId) {
+    this.setState({ displayMode: 'edit', bookId: bookId });
   }
 
   openNew() {
-    this.setState({displayMode: 'new'});
+    this.setState({ displayMode: 'new' });
   }
 
   returnToList() {
-    this.setState({displayMode: 'list'})
+    this.setState({ displayMode: 'list' });
   }
 
   getDisplayMode(mode) {
@@ -36,7 +36,7 @@ class BooksMain extends React.Component {
       edit: <BooksEdit bookId={this.state.bookId} returnToList={this.returnToList} />,
       book: <BooksDetails bookId={this.state.bookId} returnToList={this.returnToList} />,
       new: <BooksNew returnToList={this.returnToList}/>,
-    }
+    };
 
     return components[mode];
   }
@@ -46,6 +46,6 @@ class BooksMain extends React.Component {
       <div className="book-main--container">
         { this.getDisplayMode(this.state.displayMode) }
       </div>
-    )
+    );
   }
 }
