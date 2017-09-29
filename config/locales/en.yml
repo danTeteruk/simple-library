@@ -30,4 +30,32 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  menu:
+    books: books
+    categories: categories
+  books:
+    books: Books
+    name: "Name: "
+    author: "Author: "
+    category: "Category: "
+    year: "Year: "
+    save: Save
+    destroy_text: Destroy dialog
+    destroy: Destroy
+    close: Close
+    sure: Are you really want to destroy this book?
+    name_header: Name
+    category_header: Category
+    actions_header: Actions
+  categories:
+    name: "Name: "
+    save: Save
+    categories: Categories
+    name_header: Name
+    number_header: Number of books
+    actions_header: Actions
+    add_new: Add New
+    destroy: Destroy Dialog
+    close: Close
+    sure: Are you really want to destroy this category?
+    destroy: Destroy
