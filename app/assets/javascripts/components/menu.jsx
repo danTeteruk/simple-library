@@ -8,18 +8,18 @@ class Menu extends React.Component {
     };
 
     this.setBooks = this.setSection.bind(this, 'books');
-    this.setCategories = this.setSection.bind(this, 'categories')
+    this.setCategories = this.setSection.bind(this, 'categories');
 
     this.isBookActive = this.isActive.bind(this, 'books');
-    this.isCategoriesActive = this.isActive.bind(this, 'categories')
+    this.isCategoriesActive = this.isActive.bind(this, 'categories');
   }
 
   setSection(section) {
-    this.setState({selectedSection: section}, this.props.setDisplayMode(section))
+    this.setState({ selectedSection: section }, this.props.setDisplayMode(section));
   }
 
   isActive(type) {
-    if ( this.state.selectedSection == type) { return 'menu--button-active' };
+    if (this.state.selectedSection == type) { return 'menu--button-active'; };
   }
 
   render() {

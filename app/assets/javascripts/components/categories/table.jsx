@@ -18,22 +18,23 @@ class CategoriesTable extends React.Component {
 
   destroyCategory(id, event) {
     const target = event.currentTarget;
-    $.ajax({
-      url: routes.categoryDestroy(id),
-      method: 'DELETE',
-      success: () => {
-        $(target).closest('tr').hide();
-      },
-    });
+    categoriesApi.destroyCategory(id)
+      .then(() => {
+        target.closest('tr').style.display = 'none';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   getData() {
-    $.ajax({
-      url: routes.categoriesIndex(),
-      success: (data) => {
-        this.setState({ categories: data, isReady: true })
-      },
-    });
+    categoriesApi.categoriesIndex()
+      .then((response) => {
+        this.setState({ categories: response.data, isReady: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   renderCategoriesRow(category) {

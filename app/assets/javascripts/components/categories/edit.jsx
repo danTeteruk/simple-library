@@ -11,23 +11,25 @@ class CategoriesEdit extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
     this.getData = this.getData.bind(this);
+    this.toAttributes = this.toAttributes.bind(this);
+  }
+
+  toAttributes() {
+    return {
+      name: this.state.name,
+      id: this.state.id,
+    };
   }
 
   submit() {
     const { returnToList } = this.props;
-    $.ajax({
-      method: 'PATCH',
-      url: routes.categoryUpdate(this.props.categoryId),
-      data: {
-        category: {
-          name: this.state.name,
-          id: this.state.id,
-        },
-      },
-      success: () => {
+    categoriesApi.updateCategory(this.props.categoryId, this.toAttributes())
+      .then(() => {
         returnToList();
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
@@ -35,15 +37,16 @@ class CategoriesEdit extends React.Component {
   }
 
   getData() {
-    $.ajax({
-      url: routes.categoryEdit(this.props.categoryId),
-      success: (data) => {
+    categoriesApi.editCategory(this.props.categoryId)
+      .then((response) => {
         this.setState({
-          name: data.name,
-          id: data.id,
+          name: response.data.name,
+          id: response.data.id,
         });
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onChange(e) {

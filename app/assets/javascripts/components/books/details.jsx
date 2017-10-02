@@ -12,12 +12,13 @@ class BooksDetails extends React.Component {
   }
 
   getData() {
-    $.ajax({
-      url: routes.showBook(this.props.bookId),
-      success: (data) => {
-        this.setState({ book: data });
-      },
-    });
+    booksApi.showBook(this.props.bookId)
+      .then((response) => {
+        this.setState({ book: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {

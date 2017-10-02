@@ -13,8 +13,8 @@ class CategoriesMain extends React.Component {
     this.returnToList = this.returnToList.bind(this);
   }
 
-  openEdit(category_id) {
-    this.setState({ displayMode: 'edit', categoryId: category_id });
+  openEdit(categoryId) {
+    this.setState({ displayMode: 'edit', categoryId: categoryId });
   }
 
   openNew() {

@@ -32,32 +32,30 @@ class BooksEdit extends React.Component {
 
   submit() {
     const { returnToList } = this.props;
-    $.ajax({
-      method: 'PUT',
-      url: routes.updateBook(this.props.bookId),
-      data: {
-        book: this.toAttributes(),
-      },
-      success: () => {
+    booksApi.updateBook(this.props.bookId, this.toAttributes())
+      .then(() => {
         returnToList();
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   getData() {
-    $.ajax({
-      url: routes.editBook(this.props.bookId),
-      success: (data) => {
+    booksApi.editBook(this.props.bookId)
+      .then((response) => {
         this.setState({
-          id: data.id,
-          name: data.name,
-          year: data.year,
-          author: data.author,
-          category_id: data.category_id,
-          categories: data.categories,
+          id: response.data.id,
+          name: response.data.name,
+          year: response.data.year,
+          author: response.data.author,
+          category_id: response.data.category_id,
+          categories: response.data.categories,
         });
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onChange(e) {

@@ -17,23 +17,24 @@ class BooksTable extends React.Component {
   }
 
   getData() {
-    $.ajax({
-      url: routes.booksIndex(),
-      success: (data) => {
-        this.setState({ books: data, isReady: true });
-      },
-    });
+    booksApi.booksIndex()
+      .then((response) => {
+        this.setState({ books: response.data, isReady: true });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   destroyBook(id, event) {
     const target = event.currentTarget;
-    $.ajax({
-      url: routes.destroyBook(id),
-      method: 'DELETE',
-      success: () => {
-        $(target).closest('tr').hide();
-      },
-    });
+    booksApi.destroyBook(id)
+    .then(() => {
+        target.closest('tr').style.display = 'none';
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   renderBookRow(book) {

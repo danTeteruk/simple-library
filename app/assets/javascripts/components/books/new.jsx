@@ -31,28 +31,26 @@ class BooksNew extends React.Component {
 
   submit() {
     const { returnToList } = this.props;
-    $.ajax({
-      method: 'POST',
-      url: routes.createBook(),
-      data: {
-        book: this.toAttributes(),
-      },
-      success: () => {
+    booksApi.createBook(this.toAttributes())
+      .then(() => {
         returnToList();
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   getData() {
-    $.ajax({
-      url: routes.newBook(this.props.bookId),
-      success: (data) => {
+    booksApi.newBook(this.props.bookId)
+      .then((response) => {
         this.setState({
-          categories: data.categories,
-          category_id: data.category_id,
+          categories: response.data.categories,
+          category_id: response.data.category_id,
         });
-      },
-    });
+      })
+     .catch((error) => {
+        console.log(error);
+      });
   }
 
   onChange(e) {

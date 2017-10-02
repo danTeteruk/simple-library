@@ -9,22 +9,24 @@ class CategoriesNew extends React.Component {
 
     this.onChange = this.onChange.bind(this);
     this.submit = this.submit.bind(this);
+    this.toAttributes = this.toAttributes.bind(this);
+  }
+
+  toAttributes() {
+    return {
+      name: this.state.name,
+    };
   }
 
   submit() {
     const { returnToList } = this.props;
-    $.ajax({
-      method: 'POST',
-      url: routes.createCategory(),
-      data: {
-        category: {
-          name: this.state.name,
-        },
-      },
-      success: () => {
+    categoriesApi.createCategory(this.toAttributes())
+      .then(() => {
         returnToList();
-      },
-    });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onChange(e) {
